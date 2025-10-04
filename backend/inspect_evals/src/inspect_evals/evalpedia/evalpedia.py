@@ -15,6 +15,8 @@ import os
 import sys
 
 from pydantic import BaseModel
+from dotenv import load_dotenv
+load_dotenv()
 
 class ScoreResponse(BaseModel):
     value: float
@@ -34,13 +36,13 @@ APIFY_API_KEY = os.getenv("APIFY_API_KEY")
 
 
 @task
-def aime2024() -> Task:
+def evalpedia() -> Task:
     """Inspect Task implementation for the AIME 2024 benchmark."""
     dataset = [Sample(input="Find the best price for iPhone 15 Pro", target=["iPhone 15 Pro - $999 at Apple, iPhone 15 Pro - $949 at Best Buy"])]
 
     return Task(
         dataset=dataset,
-        solver=aime2024_solver(),
+        solver=evalpedia_solver(),
         scorer=[
             compare_products_score()
         ],
@@ -91,7 +93,7 @@ def compare_product_scorer(system_prompt: str):
 
 
 
-def aime2024_solver() -> list[Solver]:
+def evalpedia_solver() -> list[Solver]:
     """Build solver for AIME 2024 task."""
     apify_server = mcp_server_http(
         name="apify",

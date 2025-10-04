@@ -1,5 +1,15 @@
 # Groups: Assistants Bias Coding Cybersecurity Knowledge Mathematics Multimodal Personality Reasoning Safeguards Scheming Writing
 
+- title: "Evalpedia: Agentic Tasks with Real World Data"
+  description: |
+    Evaluates agent with live webscraping data like Google Search, Maps, and price data
+  path: src/inspect_evals/evalpedia
+  arxiv: test
+  group: Assistants
+  contributors: ["Michael Yu", "Omer Sajid"]
+  tasks:
+    - name: evalpedia
+      dataset_samples: 1
 
 - title: "MASK: Disentangling Honesty from Accuracy in AI Systems"
   description: |
