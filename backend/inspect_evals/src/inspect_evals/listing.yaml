@@ -4,7 +4,6 @@
   description: |
     Evaluates agent with live webscraping data like Google Search, Maps, and price data
   path: src/inspect_evals/evalpedia
-  arxiv: test
   group: Assistants
   contributors: ["Michael Yu", "Omer Sajid"]
   tasks:
