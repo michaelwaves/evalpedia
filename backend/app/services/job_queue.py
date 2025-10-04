@@ -82,6 +82,8 @@ class JobQueue:
             cmd += ['--max-connections', str(config.max_connections)]
         if config.system_prompt is not None:
             cmd += ['--system-message', str(config.system_prompt)]
+        if config.model is not None:
+            cmd += ['--model',str(config.model)]
         if config.task_arguments:
             for k, v in config.task_arguments.items():
                 cmd += ['-T', f'{k}={v}']
