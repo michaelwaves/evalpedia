@@ -8,6 +8,7 @@ dependencies = [
     "anthropic>=0.69.0",
     "fastapi>=0.118.0",
     "inspect-ai>=0.3.136",
+    "mcp>=1.16.0",
     "openai>=2.1.0",
     "uvicorn>=0.37.0",
 ]

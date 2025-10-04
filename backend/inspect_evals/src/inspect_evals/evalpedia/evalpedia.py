@@ -12,7 +12,6 @@ from inspect_ai.solver import (
 import openai
 import json
 import os
-import sys
 
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -37,7 +36,7 @@ APIFY_API_KEY = os.getenv("APIFY_API_KEY")
 
 @task
 def evalpedia() -> Task:
-    """Inspect Task implementation for the AIME 2024 benchmark."""
+    """Inspect Task implementation for product comparison"""
     dataset = [Sample(input="Find the best price for iPhone 15 Pro", target=["iPhone 15 Pro - $999 at Apple, iPhone 15 Pro - $949 at Best Buy"])]
 
     return Task(
@@ -47,6 +46,7 @@ def evalpedia() -> Task:
             compare_products_score()
         ],
     )
+
 
 
 @scorer(metrics=[accuracy()])
@@ -89,12 +89,8 @@ def compare_product_scorer(system_prompt: str):
     
     return score
 
-
-
-
-
 def evalpedia_solver() -> list[Solver]:
-    """Build solver for AIME 2024 task."""
+    """Build solver for Product Comparison task."""
     apify_server = mcp_server_http(
         name="apify",
         url="https://mcp.apify.com?tools=apify/e-commerce-scraping-tool,junglee/Amazon-crawler,curious_coder/facebook-marketplace,axesso_data/amazon-reviews-scraper,junglee/amazon-bestsellers",
@@ -104,3 +100,27 @@ def evalpedia_solver() -> list[Solver]:
     solver = [prompt_template(SYSTEM_PROMPT), react(tools=[apify_server]), generate()]
     return solver
 
+
+def competitor_analysis_solver() -> list[Solver]:
+    """Build solver for Product Comparison task."""
+    apify_server = mcp_server_http(
+        name="apify",   
+        url="https://mcp.apify.com?tools=apify/website-content-crawler",
+        authorization=APIFY_API_KEY
+    )
+
+    solver = [prompt_template("You are a competitor analysis agent"), react(tools=[apify_server]), generate()]
+    return solver
+
+@task
+def competitor_analysis() -> Task:
+    """Inspect Task implementation for competitor analysis"""
+    dataset = [Sample(input="Analyze this competitor website and summarize what they do: https://www.alignarena.com/", target=["Anything relating to whitebox and blackbox enterprise evals"])]
+
+    return Task(
+        dataset=dataset,
+        solver=competitor_analysis_solver(),
+        scorer=[
+            model_graded_qa()
+        ],
+    )

@@ -9,6 +9,8 @@
   tasks:
     - name: evalpedia
       dataset_samples: 1
+    - name: competitor_analysis
+      dataset_samples: 1
 
 - title: "MASK: Disentangling Honesty from Accuracy in AI Systems"
   description: |
