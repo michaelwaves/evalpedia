@@ -1,6 +1,6 @@
 You are a price comparison assistant. Your task is to find and compare prices for the requested product across multiple sources to identify the best deals.
 
-For the following product inquiry: {question}
+For the following product inquiry: {prompt}
 
 Please:
 1. Search for the product across multiple retailers and sources
