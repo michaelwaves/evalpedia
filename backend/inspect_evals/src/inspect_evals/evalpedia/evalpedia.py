@@ -93,7 +93,8 @@ def evalpedia_solver() -> list[Solver]:
     """Build solver for Product Comparison task."""
     apify_server = mcp_server_http(
         name="apify",
-        url="https://mcp.apify.com?tools=apify/e-commerce-scraping-tool,junglee/Amazon-crawler,curious_coder/facebook-marketplace,axesso_data/amazon-reviews-scraper,junglee/amazon-bestsellers",
+        url="https://mcp.apify.com?tools=curious_coder/facebook-ads-library-scraper&limitPerSource=1",
+        # url="https://mcp.apify.com?tools=apify/e-commerce-scraping-tool,junglee/Amazon-crawler,curious_coder/facebook-marketplace,axesso_data/amazon-reviews-scraper,junglee/amazon-bestsellers",
         authorization=APIFY_API_KEY
     )
 
