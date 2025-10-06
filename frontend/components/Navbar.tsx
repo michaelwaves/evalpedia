@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Beaker, FileText, Activity, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, Beaker, FileText, Activity, ChevronLeft, ChevronRight, TestTube2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
     Sheet,
@@ -18,6 +18,7 @@ import { useSidebar } from "./SidebarProvider";
 const navItems = [
     { href: "/evals", label: "Evals", icon: Beaker },
     { href: "/jobs", label: "Jobs", icon: Activity },
+    { href: "/playground", label: "Playground", icon: TestTube2 },
     { href: "http://localhost:7575", label: "Logs", icon: FileText },
 ];
 
