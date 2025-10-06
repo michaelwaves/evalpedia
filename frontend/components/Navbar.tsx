@@ -58,6 +58,7 @@ export function Navbar() {
                                         <Link
                                             key={item.href}
                                             href={item.href}
+                                            target={item.href.startsWith("http") ? "_blank" : "_self"}
                                             onClick={() => setOpen(false)}
                                         >
                                             <Button
@@ -111,7 +112,9 @@ export function Navbar() {
                         const Icon = item.icon;
                         const isActive = pathname === item.href;
                         return (
-                            <Link key={item.href} href={item.href}>
+                            <Link key={item.href} href={item.href}
+                                target={item.href.startsWith("http") ? "_blank" : "_self"}
+                            >
                                 <div
                                     className={cn(
                                         "flex items-center rounded h-8 text-sm",
